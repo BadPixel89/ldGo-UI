@@ -10,7 +10,7 @@ Once you have located it run .\gold.exe -h for a full helptext.
 
 For more info and cross platform versions see the GoLD repo [here](https://github.com/BadPixel89/gold)
 
-## This application depends on npcap, please install it before running ldGo-UI. 
+# This application depends on npcap, please install it before running ldGo-UI. 
 You will need admin/elevation to install this
 
 [npcap](https://npcap.com/#download)

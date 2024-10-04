@@ -6,7 +6,7 @@ ldGo-UI is a next generation link discovery tool, fully compatible with Windows 
 
 For those who prefer CLI tools, the internal executable module "ldGo" can be run independently from the command line, with easy to understand flags. You can find this executable in the same folder as the UI wrapper after first run. 
 
-Once you have located it run .\gold.exe -h for a full helptext.
+Once you have located it run .\ldgo.exe -h for a full helptext.
 
 For more info and cross platform versions see the ldGo repo [here](https://github.com/BadPixel89/ldGo)
 

@@ -1,0 +1,23 @@
+CLEAN UP
+
+bits of fonts:
+⭮
+🗐
+📄
+▼
+
+// test this
+
+private void ExtractResource(string resourceName, string fileName)
+{
+      object ob = Properties.Resources.ResourceManager.GetObject(resourceName, originalCulture);
+      byte[] resourceBytes = (byte[])ob;
+      using (FileStream stream = new FileStream(fileName, FileMode.CreateNew, FileAccess.Write))
+      {
+         byte[] bytes = resourceBytes;
+         stream.Write(bytes, 0, bytes.Length);
+         stream.Close();
+         stream.Dispose();
+      }
+}
+

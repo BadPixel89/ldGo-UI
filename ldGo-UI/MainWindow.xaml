@@ -1,0 +1,97 @@
+﻿<Window x:Name="win_ldGoUI" x:Class="ldGoUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ldGoUI"
+        mc:Ignorable="d"
+        Title="ldGo-UI v0.2b" Height="340" Width="580" ResizeMode="NoResize">
+    <Grid HorizontalAlignment="Left" Width="580">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Height="19" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="580">
+            <MenuItem Header="Help" Click="me_help_Click">
+            </MenuItem>
+        </Menu>
+        <ComboBox x:Name="cb_network_cards" Margin="0,32,31,0" VerticalAlignment="Top" Grid.Column="1" Height="22" DropDownClosed="cb_network_cards_DropDownClosed" HorizontalAlignment="Right" Width="397"/>
+        <Label Content="Connection:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="26" Width="118"/>
+        <Label x:Name="lb_mac" Content="Mac:" HorizontalAlignment="Left" Margin="0,88,0,0" VerticalAlignment="Top" Height="26" Width="40" Grid.Column="1"/>
+        <Label x:Name="lb_mac_value" HorizontalAlignment="Left" Margin="45,88,0,0" VerticalAlignment="Top" Width="153" MouseLeftButtonDown="lb_mac_value_MouseLeftButtonDown" Height="26" Grid.Column="1">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Label.MouseLeftButtonDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="Opacity">
+                                        <DoubleAnimation  Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <Label x:Name="lb_ip_value" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="236,88,0,0" VerticalAlignment="Top" Width="118" MouseLeftButtonDown="lb_ip_value_MouseLeftButtonDown" Height="26">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Label.MouseLeftButtonDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="Opacity">
+                                        <DoubleAnimation  Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <Label x:Name="lb_interface_value" Content="" HorizontalAlignment="Left" Margin="0,61,0,0" VerticalAlignment="Top" Width="435" MouseLeftButtonDown="lb_interface_value_MouseLeftButtonDown" Height="26" Grid.Column="1">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Label.MouseLeftButtonDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="Opacity">
+                                        <DoubleAnimation  Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <Button x:Name="btn_get_data" Content="Get Link Data" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" Width="118" VerticalContentAlignment="Center" Click="btn_get_data_Click"/>
+        <Button x:Name="btn_cancel" Content="Cancel" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Width="118" Click="btn_cancel_Click"/>
+        <Button x:Name="btn_save" Content="Save Link Data" HorizontalAlignment="Center" Margin="0,114,0,0" VerticalAlignment="Top" Width="118" Click="btn_save_Click"/>
+        <Button x:Name="btn_copy" Content="Copy Link Data" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Width="118" Click="btn_copy_Click"/>
+        <StackPanel x:Name="sp_protocol" Margin="88,119,120,0" Orientation="Horizontal" Height="20" VerticalAlignment="Top" Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type RadioButton}">
+                    <Setter Property="Margin" Value="10,0,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton x:Name="rb_all" Content="All" ClickMode="Press" IsChecked="True" Checked="rb_all_Checked"/>
+            <RadioButton x:Name="rb_cdp" Content="CDP" ClickMode="Press" Checked="rb_cdp_Checked"/>
+            <RadioButton x:Name="rb_lldp" Content="LLDP" ClickMode="Press" Checked="rb_lldp_Checked"/>
+
+        </StackPanel>
+        <Label x:Name="lb_status" Content="{Binding ReadoutTimerString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="138,250,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Grid.Column="1" Content="IP:" HorizontalAlignment="Left" Margin="208,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Protocol filter:" HorizontalAlignment="Left" Margin="0,114,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="lb_output_names" Background="Transparent" BorderThickness="0" IsReadOnly="True" HorizontalAlignment="Left" Margin="4,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" Height="109" Grid.Column="1" Text="Protocol:&#xD;&#xA;Switch Name&#xD;&#xA;Interface:&#xD;&#xA;VLAN:&#xD;&#xA;Switch Model&#xD;&#xA;VTP Domain:"/>
+        <TextBox x:Name="tb_output" Grid.Column="1" Background="Transparent" BorderThickness="0" IsReadOnly="true" HorizontalAlignment="Left" Margin="196,140,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" Height="109"/>
+        <Button x:Name="btn_refresh" Content="⭮" HorizontalAlignment="Left" Margin="106,33,0,0" VerticalAlignment="Top" Width="22" Click="btn_refresh_Click"/>
+    </Grid>
+</Window>

@@ -29,5 +29,6 @@ Release page:
 https://github.com/BadPixel89/ldGo-UI/releases/tag/v0.3a
 
 Direct link:
+
 https://github.com/BadPixel89/ldGo-UI/releases/download/v0.3a/ldGo-UI.exe
 

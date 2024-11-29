@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ldGoUI"
         mc:Ignorable="d"
-        Title="ldGo-UI v0.3a" Height="340" Width="580" ResizeMode="NoResize">
+        Title="ldGo-UI v0.4a" Height="340" Width="580" ResizeMode="NoResize">
     <Grid HorizontalAlignment="Left" Width="580">
         <Grid.RowDefinitions>
             <RowDefinition/>

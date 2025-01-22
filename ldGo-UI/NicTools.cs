@@ -16,16 +16,46 @@ namespace ldGoUI
         public string SwitchModel;
         public string VTPDomain;
     }
+    struct NicData 
+    {
+        public string name;
+        public string mac;
+        public string displayName;
+    }
     internal class NicTools
     {
         public NetworkInterface[] Nics { get; set; }
-        public string[] GetNicNames()
+        public List<NicData> GetNicNames()
         {
             LoadNics();
             List<string> names = new List<string>();
+            List<NicData> data = new List<NicData>();
+            
+            for (int i = 0; i < Nics.Length; i++)
+            {
+                NicData n = new NicData();
+                n.name = Nics[i].Name;
+                n.mac = Nics[i].GetPhysicalAddress().ToString();
 
+                foreach (UnicastIPAddressInformation ip in Nics[i].GetIPProperties().UnicastAddresses)
+                {
+                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork && Nics[i].OperationalStatus == OperationalStatus.Up)
+                    {
+                        n.displayName = "[✓] " + n.name + " | " +Nics[i].Description;
+                        break;
+                    }
+                    else
+                    {
+                        n.displayName = "[⨯] " + n.name + " | " + Nics[i].Description;
+                    }
+                }
+                data.Add(n);
+            }
+            return data;
+            /*
             foreach (NetworkInterface nic in Nics)
             {
+                
                 string textBoxNicState = "";
                 if (nic != null && !nic.Name.ToLower().Contains("pseudo"))
                 {
@@ -44,7 +74,9 @@ namespace ldGoUI
                     names.Add(textBoxNicState + nic.Name);
                 }
             }
+            
             return names.ToArray();
+            */
         }
         public void LoadNics()
         {

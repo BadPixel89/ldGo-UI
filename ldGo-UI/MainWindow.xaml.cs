@@ -61,10 +61,8 @@ namespace ldGoUI
             {
                 return;
             }
-            //  remove the tick or cross from the text of the dropdown menu
-            nicLookup = nicLookup.Remove(0, 4);
             
-            NetworkInterface result = NicTool.Nics.First(obj => obj.Name == nicLookup);
+            NetworkInterface result = NicTool.Nics.First(obj => nicLookup.Contains(obj.Name));
 
             lb_interface_value.Content = result.Description;
             _nicID = result.Id;
@@ -167,9 +165,9 @@ namespace ldGoUI
             SetControls(false);
             NicTool.LoadNics();
             cb_network_cards.Items.Clear();
-            foreach (string nicName in NicTool.GetNicNames())
+            foreach (NicData nicData in NicTool.GetNicNames())
             {
-                cb_network_cards.Items.Add(nicName);
+                cb_network_cards.Items.Add(nicData.displayName);
             }
             SetControls(true);
         }

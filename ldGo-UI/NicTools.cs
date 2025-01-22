@@ -52,31 +52,6 @@ namespace ldGoUI
                 data.Add(n);
             }
             return data;
-            /*
-            foreach (NetworkInterface nic in Nics)
-            {
-                
-                string textBoxNicState = "";
-                if (nic != null && !nic.Name.ToLower().Contains("pseudo"))
-                {
-                    foreach (UnicastIPAddressInformation ip in nic.GetIPProperties().UnicastAddresses)
-                    {
-                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork && nic.OperationalStatus == OperationalStatus.Up)
-                        {
-                            textBoxNicState = "[✓] ";
-                            break;
-                        }
-                        else
-                        {
-                            textBoxNicState = "[⨯] ";
-                        }
-                    }
-                    names.Add(textBoxNicState + nic.Name);
-                }
-            }
-            
-            return names.ToArray();
-            */
         }
         public void LoadNics()
         {

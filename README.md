@@ -26,5 +26,5 @@ ldGo-UI supports both Cisco Discovery Protocol (CDP) and Link Layer Discovery Pr
 # Beta release
 Release page:
 
-[https://github.com/BadPixel89/ldGo-UI/releases/](https://github.com/BadPixel89/ldGo-UI/releases)
+[https://github.com/BadPixel89/ldGo-UI/releases/latest](https://github.com/BadPixel89/ldGo-UI/releases/latest)
 

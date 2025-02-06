@@ -41,12 +41,12 @@ namespace ldGoUI
                 {
                     if (ip.Address.AddressFamily == AddressFamily.InterNetwork && Nics[i].OperationalStatus == OperationalStatus.Up)
                     {
-                        n.displayName = "[✓] " + n.name + " | " +Nics[i].Description;
+                        n.displayName = "[✓] " + n.name + "    |    " +Nics[i].Description;
                         break;
                     }
                     else
                     {
-                        n.displayName = "[⨯] " + n.name + " | " + Nics[i].Description;
+                        n.displayName = "[⨯] " + n.name + "    |    " + Nics[i].Description;
                     }
                 }
                 data.Add(n);
